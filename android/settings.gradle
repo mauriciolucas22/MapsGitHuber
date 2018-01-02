@@ -1,0 +1,3 @@
+rootProject.name = 'MapsGitHuber'
+
+include ':app'
