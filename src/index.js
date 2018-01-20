@@ -1,26 +1,12 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, Button, Modal } from 'react-native';
 import MapView from 'react-native-maps';
+import { Provider } from 'react-redux';
+import store from './redux/store';
 
-import "./config/ReactotronConfig";
+import "config/ReactotronConfig";
+import styles from 'styles';
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-  },
-  map: {
-    ...StyleSheet.absoluteFillObject,
-  },
-  modalContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    backgroundColor: 'grey'
-  },
-  innerContainer: {
-    alignItems: 'center',
-  },
-});
 
 
 class App extends Component {
@@ -45,6 +31,7 @@ class App extends Component {
     console.log(region);
 
     return(
+      <Provider store={store}>
       <View style={styles.container}>
 
         <MapView
@@ -77,8 +64,9 @@ class App extends Component {
             </View>
           </Modal>
       </View>
+      </Provider>
     );
   }
 }
 
-export default App;
+export default (App);
