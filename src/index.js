@@ -13,7 +13,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as actions from './redux/actions/newUser';
 
-class App extends Component {
+ class App extends Component {
 
   state = {
     modalVisible: false,
@@ -35,7 +35,7 @@ class App extends Component {
 
   render() {
 
-    const { region } = this.props;
+    //const { region } = this.props;
 
     return(
       <Provider store={store}>
@@ -78,7 +78,6 @@ class App extends Component {
 
 const mapStateToProps = state => ({});
 
-const mapDispatchToProps = dispatch =>
-  bindActionCreators(actions, dispatch);
+const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

@@ -12,7 +12,7 @@ import reducers from './reducers';
 const middleware = [thunk];
 
 // Store for redux
-const createAppropriateStore = __DEV__ ? console.tron.createStore: createStore;
+const createAppropriateStore = __DEV__ ? console.tron.createStore : createStore;
 
 const store = createAppropriateStore(reducers, applyMiddleware(...middleware));
 
