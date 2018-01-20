@@ -8,9 +8,12 @@ import store from './redux/store';
 
 import styles from 'styles';
 
+// Redux
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import * as actions from './redux/actions/newUser';
 
-
-export default class App extends Component {
+class App extends Component {
 
   state = {
     modalVisible: false,
@@ -25,11 +28,14 @@ export default class App extends Component {
     this.setState({ modalVisible: false });
   }
 
+  addNewUser = () => {
+    this.props.searchRepository('facebook/bistro');
+  }
+
 
   render() {
 
     const { region } = this.props;
-    console.log(region);
 
     return(
       <Provider store={store}>
@@ -69,3 +75,10 @@ export default class App extends Component {
     );
   }
 }
+
+const mapStateToProps = state => ({});
+
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(actions, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

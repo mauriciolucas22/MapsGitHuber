@@ -1,6 +1,6 @@
 import api from 'services/api';
 
-function addUser(repo) {
+function addUser(repository) {
   return {
     type: 'ADD_USER',
     playload: {
