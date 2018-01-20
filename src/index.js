@@ -1,15 +1,16 @@
+import "config/ReactotronConfig";
+
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, Button, Modal } from 'react-native';
 import MapView from 'react-native-maps';
 import { Provider } from 'react-redux';
 import store from './redux/store';
 
-import "config/ReactotronConfig";
 import styles from 'styles';
 
 
 
-class App extends Component {
+export default class App extends Component {
 
   state = {
     modalVisible: false,
@@ -68,5 +69,3 @@ class App extends Component {
     );
   }
 }
-
-export default (App);
