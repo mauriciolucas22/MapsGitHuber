@@ -4,18 +4,11 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet, Button, Modal } from 'react-native';
 import MapView from 'react-native-maps';
 import { Provider } from 'react-redux';
-import store from './redux/store';
+import store from 'redux/store';
 
 import styles from 'styles';
 
-// Redux
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-
-import { newUser } from './redux/actions/newUser'
-
-
-class App extends Component {
+export default class App extends Component {
 
   state = {
     modalVisible: false,
@@ -27,17 +20,14 @@ class App extends Component {
   }
 
   closeModal() {
-    this.props.searchRepository("facebook");
-    
-
     this.setState({ modalVisible: false });
   }
 
 
   render() {
 
-    const { region } = this.props;
-    console.log(region);
+    // const { region } = this.props;
+    // console.log(region);
 
     return(
       <Provider store={store}>
@@ -77,10 +67,3 @@ class App extends Component {
     );
   }
 }
-
-const mapStateToProps = state => ({});
-
-const mapDispatchToProps = dispatch =>
-  bindActionCreators({ newUser }, dispatch);
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
