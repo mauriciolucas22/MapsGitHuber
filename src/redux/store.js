@@ -1,16 +1,15 @@
 import { createStore, applyMiddleware } from 'redux';
-import thunk from 'redux-thunk';
-// import createSagaMiddleware from 'redux-saga';
+import createSagaMiddleware from 'redux-saga';
 
 // Reducers
 import reducers from './reducers';
 
-
-//const sagaMonitor = __DEV__ ? console.tron.createSagaMonitor() : null;
-//const sagaMiddleware = createSagaMiddleware({ sagaMonitor });
+// Saga
+const sagaMonitor = __DEV__ ? console.tron.createSagaMonitor() : null;
+const sagaMiddleware = createSagaMiddleware({ sagaMonitor });
 
 // Array de middleware
-const middleware = [thunk];
+const middleware = [sagaMiddleware];
 
 // Store for redux
 const createAppropriateStore = __DEV__ ? console.tron.createStore : createStore;
