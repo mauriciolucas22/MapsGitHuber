@@ -1,15 +1,8 @@
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-<<<<<<< HEAD
-=======
 
 // Reducers
 import reducers from './reducers';
-
-<<<<<<< HEAD
-// Store for Saga
-=======
-
 
 // Array de middleware
 const middleware = [thunk];
