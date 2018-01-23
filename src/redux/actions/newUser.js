@@ -1,15 +1,15 @@
 import api from 'services/api';
 
-function addUser(repo) {
+function addUser(repository) {
   return {
     type: 'ADD_USER',
     playload: {
-      repo,
+      repository,
     },
   };
 };
 
-export function searchRepository(repositoryName) {
+export function searchAndAddUser(repositoryName) {
   return async (dispatch) => {
     const response = await api.get(`/repos/${repositoryName}`);
     

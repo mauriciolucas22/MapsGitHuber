@@ -8,6 +8,12 @@ import store from 'redux/store';
 
 import styles from 'styles';
 
+// Redux
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+
+import * as actions from 'redux/actions/newUser';
+
 export default class App extends Component {
 
   state = {
@@ -19,7 +25,7 @@ export default class App extends Component {
     this.setState({ modalVisible: true });
   }
 
-  closeModal() {
+  closeModal() { 
     this.setState({ modalVisible: false });
   }
 
@@ -67,3 +73,5 @@ export default class App extends Component {
     );
   }
 }
+
+const mapStateToProps = state => ({});
