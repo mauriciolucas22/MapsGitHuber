@@ -24,7 +24,7 @@ class Map extends Component {
   }
 
   closeModal() { 
-    this.props.searchAndAddUser('facebook/bistro');
+    this.props.searchAndAddUser('facebook');
 
     this.setState({ modalVisible: false });
   }
