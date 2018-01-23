@@ -14,7 +14,7 @@ import { connect } from 'react-redux';
 
 import * as actions from 'redux/actions/newUser';
 
-export default class App extends Component {
+class App extends Component {
 
   state = {
     modalVisible: false,
@@ -75,3 +75,8 @@ export default class App extends Component {
 }
 
 const mapStateToProps = state => ({});
+
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(actions, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
