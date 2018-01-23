@@ -12,7 +12,7 @@ function addUser(repo) {
 export function searchRepository(repositoryName) {
   return async (dispatch) => {
     const response = await api.get(`/repos/${repositoryName}`);
-
+    
     dispatch(addUser(response.data));
   }
 }

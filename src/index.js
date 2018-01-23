@@ -8,9 +8,14 @@ import store from './redux/store';
 
 import styles from 'styles';
 
+// Redux
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+
+import { newUser } from './redux/actions/newUser'
 
 
-export default class App extends Component {
+class App extends Component {
 
   state = {
     modalVisible: false,
@@ -22,6 +27,9 @@ export default class App extends Component {
   }
 
   closeModal() {
+    this.props.searchRepository("facebook");
+    
+
     this.setState({ modalVisible: false });
   }
 
@@ -69,3 +77,10 @@ export default class App extends Component {
     );
   }
 }
+
+const mapStateToProps = state => ({});
+
+const mapDispatchToProps = dispatch =>
+  bindActionCreators({ newUser }, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
