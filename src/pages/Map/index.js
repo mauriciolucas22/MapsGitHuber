@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Button, Modal } from 'react-native';
+import { View, Text, StyleSheet, Button, Modal, TextInput } from 'react-native';
 import MapView from 'react-native-maps';
 
 import styles from 'styles';
@@ -23,14 +23,16 @@ class Map extends Component {
       latitude: LATITUDE,
       longitude: LONGITUDE,
     }),
+    location: {},
   }
 
 
-  openModal() {
+  openModal(location) {
     this.setState({ modalVisible: true });
+    console.tron.log(location);
   }
 
-  closeModal() { 
+  closeModal() {
     this.props.searchUser('facebook');
 
     this.setState({ modalVisible: false });
@@ -42,7 +44,7 @@ class Map extends Component {
     // const { region } = this.props;
     // console.log(region);
 
-    return(
+    return (
       <View style={styles.container}>
 
         <MapView
@@ -53,30 +55,31 @@ class Map extends Component {
             latitudeDelta: 0.0042,
             longitudeDelta: 0.0031,
           }}
-          onLongPress={() => this.openModal()}
+          onLongPress={ coordinate => this.openModal(coordinate) }
         >
 
-          <MapView.Marker.Animated coordinate={this.state.coordinate}/>
+          <MapView.Marker.Animated coordinate={this.state.coordinate} />
 
         </MapView>
 
 
         <Modal
-              visible={this.state.modalVisible}
-              animationType={'slide'}
-              onRequestClose={() => this.closeModal()}
-          >
-            <View style={styles.modalContainer}>
-              <View style={styles.innerContainer}>
-                <Text>This is content inside of modal component</Text>
-                <Button
-                    onPress={() => this.closeModal()}
-                    title="Close modal"
-                >
-                </Button>
-              </View>
+          visible={this.state.modalVisible}
+          animationType={'slide'}
+          onRequestClose={() => this.closeModal()}
+        >
+          <View style={styles.modalContainer}>
+            <View style={styles.innerContainer}>
+              <Text>This is content inside of modal component</Text>
+              <TextInput value="JESUS"/>
+              <Button
+                onPress={() => this.closeModal()}
+                title="Close modal"
+              >
+              </Button>
             </View>
-          </Modal>
+          </View>
+        </Modal>
       </View>
     );
   }
