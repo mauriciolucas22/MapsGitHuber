@@ -23,7 +23,11 @@ class Map extends Component {
       latitude: LATITUDE,
       longitude: LONGITUDE,
     }),
-    location: {},
+    coordinate: {
+      latitude: -27.2177659,
+      longitude: -49.6451598,
+    },
+    userName: 'Digite',
   }
 
 
@@ -62,7 +66,7 @@ class Map extends Component {
           onLongPress={ this.openModal }
         >
 
-          <MapView.Marker.Animated coordinate={this.state.coordinate} />
+        { this.state.coordinate && <MapView.Marker.Animated coordinate={this.state.coordinate} /> }
 
         </MapView>
 
@@ -75,7 +79,7 @@ class Map extends Component {
           <View style={styles.modalContainer}>
             <View style={styles.innerContainer}>
               <Text>This is content inside of modal component</Text>
-              <TextInput value="JESUS"/>
+              <TextInput onChangeText={userName => this.setState({userName})} value={this.state.userName}/>
               <Button
                 onPress={() => this.closeModal()}
                 title="Close modal"
