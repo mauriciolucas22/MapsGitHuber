@@ -27,15 +27,19 @@ class Map extends Component {
   }
 
 
-  openModal(location) {
+  openModal = ({ nativeEvent }) => {
     this.setState({ modalVisible: true });
-    console.tron.log(location);
+    console.tron.log(nativeEvent.coordinate);
   }
 
   closeModal() {
     this.props.searchUser('facebook');
 
     this.setState({ modalVisible: false });
+  }
+
+  onMapPress = ({ nativeEvent }) => {
+    console.tron.log(nativeEvent.coordinate)
   }
 
 
@@ -55,7 +59,7 @@ class Map extends Component {
             latitudeDelta: 0.0042,
             longitudeDelta: 0.0031,
           }}
-          onLongPress={ coordinate => this.openModal(coordinate) }
+          onLongPress={ this.openModal }
         >
 
           <MapView.Marker.Animated coordinate={this.state.coordinate} />
