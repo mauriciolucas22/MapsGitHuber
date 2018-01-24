@@ -28,7 +28,7 @@ class Map extends Component {
       longitude: -49.6451598,
     },
     coordinateTest: [],
-    userName: 'Digite',
+    userName: 'mauriciolucas22',
   }
 
 
@@ -38,7 +38,7 @@ class Map extends Component {
 
     // faz copia e setState
     this.setState({ coordinateTest: [
-      this.state.coordinateTest,
+      ...this.state.coordinateTest,
       nativeEvent.coordinate
     ]});
   }
@@ -76,7 +76,7 @@ class Map extends Component {
           onLongPress={ this.openModal }
         >
 
-        { this.state.coordinate && <MapView.Marker.Animated coordinate={this.state.coordinate} /> }
+        { this.state.coordinateTest && this.state.coordinateTest.map(coord => <MapView.Marker coordinate={coord} /> ) }
 
         </MapView>
 

@@ -1,9 +1,17 @@
 import { createStore, applyMiddleware } from 'redux';
 import createSagaMiddleware from 'redux-saga';
+import { persistStore, persistCombineReducers } from 'redux-persist';
+import storage from 'redux-persist/es/storage';
 import sagas from './sagas';
 
 // Reducers
 import reducers from './reducers';
+
+// Persistor
+const rootReducer = persistCombineReducers({
+  key: 'root',
+  storage,
+}, reducers);
 
 // Saga
 const sagaMonitor = __DEV__ ? console.tron.createSagaMonitor() : null;
@@ -16,11 +24,10 @@ const middleware = [sagaMiddleware];
 const createAppropriateStore = __DEV__ ? console.tron.createStore : createStore;
 
 export const store = createAppropriateStore(
-  reducers,
+  rootReducer,
   applyMiddleware(...middleware),
 );
 
+export const persistor = persistStore(store);
+
 sagaMiddleware.run(sagas);
-
-
-export default store;
