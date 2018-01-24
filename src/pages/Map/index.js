@@ -12,10 +12,17 @@ import { connect } from 'react-redux';
 
 import * as actions from 'redux/actions/newUser';
 
+const LATITUDE = -27.2177659;
+const LONGITUDE = -49.6451598;
+
 class Map extends Component {
 
   state = {
     modalVisible: false,
+    coordinate: new MapView.AnimatedRegion({
+      latitude: LATITUDE,
+      longitude: LONGITUDE,
+    }),
   }
 
 
@@ -24,7 +31,7 @@ class Map extends Component {
   }
 
   closeModal() { 
-    this.props.searchAndAddUser('facebook');
+    this.props.searchUser('facebook');
 
     this.setState({ modalVisible: false });
   }
@@ -48,6 +55,9 @@ class Map extends Component {
           }}
           onLongPress={() => this.openModal()}
         >
+
+          <MapView.Marker.Animated coordinate={this.state.coordinate}/>
+
         </MapView>
 
 

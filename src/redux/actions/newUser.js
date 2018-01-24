@@ -1,6 +1,4 @@
-import api from 'services/api';
-
-export function addUser(userName) {
+export function searchUser(userName) {
   return {
     type: 'SEARCH_USER',
     playload: {
