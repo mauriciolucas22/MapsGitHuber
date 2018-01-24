@@ -27,23 +27,33 @@ class Map extends Component {
       latitude: -27.2177659,
       longitude: -49.6451598,
     },
+    coordinateTest: [],
     userName: 'Digite',
   }
 
 
   openModal = ({ nativeEvent }) => {
     this.setState({ modalVisible: true });
-    console.tron.log(nativeEvent.coordinate);
+    //console.tron.log(nativeEvent.coordinate);
+
+    // faz copia e setState
+    this.setState({ coordinateTest: [
+      this.state.coordinateTest,
+      nativeEvent.coordinate
+    ]});
   }
 
   closeModal() {
-    this.props.searchUser('facebook');
+    this.props.searchUser(this.state.userName);
+
+    console.tron.log(this.state.coordinateTest);
 
     this.setState({ modalVisible: false });
   }
 
   onMapPress = ({ nativeEvent }) => {
     console.tron.log(nativeEvent.coordinate)
+    
   }
 
 
