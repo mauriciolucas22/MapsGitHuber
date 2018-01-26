@@ -12,6 +12,8 @@ import { connect } from 'react-redux';
 
 import * as actions from 'redux/actions/newUser';
 
+import Marker from 'components/Marker';
+
 const LATITUDE = -27.2177659;
 const LONGITUDE = -49.6451598;
 
@@ -66,6 +68,7 @@ class Map extends Component {
 
     // const { region } = this.props;
     // console.log(region);
+    // { this.props.users && this.props.users.map(coord => <MapView.Marker style={styles.marker} key={coord.user.id} image={coord.user.data.avatar_url} coordinate={coord.user.coordinate} /> ) }
     
 
     return (
@@ -82,7 +85,7 @@ class Map extends Component {
           onLongPress={ this.openModal }
         >
 
-        { this.props.users && this.props.users.map(coord => <MapView.Marker key={coord.user.id} coordinate={coord.user.coordinate} /> ) }
+          { this.props.users && this.props.users.map(coord => <MapView.Marker style={styles.marker} key={coord.user.id} image={coord.user.data.avatar_url} coordinate={coord.user.coordinate} /> ) }
 
         </MapView>
 

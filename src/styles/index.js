@@ -16,6 +16,12 @@ const styles = StyleSheet.create({
   innerContainer: {
     alignItems: 'center',
   },
+  marker: {
+    width: 32,
+    height: 5,
+    borderRadius: 20,
+    marginLeft: 40,
+  },
 });
 
 export default styles;
