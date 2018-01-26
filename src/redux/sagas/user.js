@@ -9,8 +9,13 @@ export function* searchAndAddUser(action) {
     type: 'ADD_USER',
     playload: { 
       user: {
+        id: response.data.id,
         coordinate: action.playload.coordinate,
-        data: response.data,
+        data: {
+          login: response.data.login,
+          avatar_url: response.data.avatar_url,
+          bio: response.data.bio,
+        }
       }
     }
   });
