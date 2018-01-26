@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { AsyncStorage, View, Text, StyleSheet, Button, Modal, TextInput } from 'react-native';
-import MapView from 'react-native-maps';
+import { AsyncStorage, View, Text, StyleSheet, Image, Modal, TextInput, TouchableOpacity } from 'react-native';
+import MapView, { Marker } from 'react-native-maps';
 
 import styles from 'styles';
 
@@ -12,8 +12,7 @@ import { connect } from 'react-redux';
 
 import * as actions from 'redux/actions/newUser';
 
-const LATITUDE = -27.2177659;
-const LONGITUDE = -49.6451598;
+import MArker from 'components/Marker';
 
 /**
  * coordinate: new MapView.AnimatedRegion({
@@ -61,12 +60,24 @@ class Map extends Component {
     
   }
 
+  cancel() {
+    this.setState({ modalVisible: false });
+  }
+
 
   render() {
 
     // const { region } = this.props;
     // console.log(region);
-    
+    /**
+     * { this.props.users && this.props.users.map(coord => <MapView.Marker key={coord.user.id}  coordinate={coord.user.coordinate} >
+          <View style={styles.marker}>
+            <Image source={uri= coord.user.data.avatar_url }/>
+          </View>
+        </MapView.Marker> ) }
+
+        { this.props.users && this.props.users.map( marker =>  <Marker key={} image={marker.user.data.avatar_url} coordinate={marker.user.coordinate} />) }
+     */
 
     return (
       <View style={styles.container}>
@@ -82,7 +93,7 @@ class Map extends Component {
           onLongPress={ this.openModal }
         >
 
-        { this.props.users && this.props.users.map(coord => <MapView.Marker key={coord.user.id} coordinate={coord.user.coordinate} /> ) }
+{ this.props.users && this.props.users.map( marker =>  <Marker key={marker.user.id} image={marker.user.data.avatar_url} coordinate={marker.user.coordinate} />) }
 
         </MapView>
 
@@ -94,13 +105,19 @@ class Map extends Component {
         >
           <View style={styles.modalContainer}>
             <View style={styles.innerContainer}>
-              <Text>This is content inside of modal component</Text>
-              <TextInput onChangeText={userName => this.setState({userName})} value={this.state.userName}/>
-              <Button
-                onPress={() => this.closeModal()}
-                title="Close modal"
-              >
-              </Button>
+              <Text style={styles.title}>Adicionar novo local</Text>
+              
+              <TextInput style={styles.input} onChangeText={userName => this.setState({userName})} value={this.state.userName}/>
+              
+              <View style={styles.buttonContainer}>
+                <TouchableOpacity style={styles.saveButton} onPress={() => this.closeModal()} >
+                  <Text style={styles.textSaveButton} >Salvar</Text>
+                </TouchableOpacity>
+                
+                <TouchableOpacity style={styles.cancelButton} onPress={() => this.cancel()}>
+                    <Text style={styles.textCancelButton} >Cancelar</Text>
+                </TouchableOpacity>
+              </View>
             </View>
           </View>
         </Modal>
