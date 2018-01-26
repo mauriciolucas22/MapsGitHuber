@@ -93,7 +93,11 @@ class Map extends Component {
           onLongPress={ this.openModal }
         >
 
-{ this.props.users && this.props.users.map( marker =>  <Marker key={marker.user.id} image={marker.user.data.avatar_url} coordinate={marker.user.coordinate} />) }
+{ this.props.users && this.props.users.map(coord => <MapView.Marker key={coord.user.id}  coordinate={coord.user.coordinate} >
+          <View>
+            <Image style={styles.avatar} source={{ uri: coord.user.data.avatar_url }}/>
+          </View>
+        </MapView.Marker> ) }
 
         </MapView>
 

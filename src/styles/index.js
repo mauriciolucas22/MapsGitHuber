@@ -60,13 +60,11 @@ const styles = StyleSheet.create({
     backgroundColor: colors.cancelButton,
   },
   //textCancelButton: {},
-  containerMarker: {
-    borderRadius: 5,
-  },
   avatar: {
     width: 32,
     height: 32,
-    resizeMode: 'contain',
+    borderRadius: 5,
+    borderColor: '#FFF',
   }
 
 });
