@@ -13,17 +13,14 @@ const styles = StyleSheet.create({
   modalContainer: {
     flex: 1,
     justifyContent: 'center',
-    shadowColor: 'grey',
-    shadowOpacity: 5.0
-  },
-  marker: {
-    height: 45,
+    shadowColor: colors.black,
+    shadowOpacity: 60,
   },
   innerContainer: {
     alignItems: 'center',
     padding: 20,
     borderRadius: 5,
-    backgroundColor: colors.modalBackgroundColor,
+    backgroundColor: colors.white,
     marginHorizontal: 20,
   },
   title:{
@@ -63,8 +60,8 @@ const styles = StyleSheet.create({
   avatar: {
     width: 32,
     height: 32,
-    borderRadius: 5,
-    borderColor: '#FFF',
+    borderWidth: 5,
+    borderColor: colors.white,
   }
 
 });
