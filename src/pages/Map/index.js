@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Button, Modal, TextInput } from 'react-native';
+import { AsyncStorage, View, Text, StyleSheet, Button, Modal, TextInput } from 'react-native';
 import MapView from 'react-native-maps';
 
 import styles from 'styles';
@@ -15,14 +15,17 @@ import * as actions from 'redux/actions/newUser';
 const LATITUDE = -27.2177659;
 const LONGITUDE = -49.6451598;
 
+/**
+ * coordinate: new MapView.AnimatedRegion({
+      latitude: LATITUDE,
+      longitude: LONGITUDE,
+    }),
+ */
+
 class Map extends Component {
 
   state = {
     modalVisible: false,
-    coordinate: new MapView.AnimatedRegion({
-      latitude: LATITUDE,
-      longitude: LONGITUDE,
-    }),
     coordinate: {
       latitude: -27.2177659,
       longitude: -49.6451598,
@@ -31,24 +34,26 @@ class Map extends Component {
     userName: 'mauriciolucas22',
   }
 
+  componentWillMount = () => {
+    // AsyncStorage.clear();
+    console.tron.log(this.props.users);
+  }
+
 
   openModal = ({ nativeEvent }) => {
     this.setState({ modalVisible: true });
     //console.tron.log(nativeEvent.coordinate);
 
     // faz copia e setState
-    this.setState({ coordinateTest: [
-      ...this.state.coordinateTest,
-      nativeEvent.coordinate
-    ]});
+    this.setState({ coordinate: nativeEvent.coordinate});
   }
 
   closeModal() {
-    this.props.searchUser(this.state.userName);
-
-    console.tron.log(this.state.coordinateTest);
+    this.props.searchUser(this.state.userName, this.state.coordinate);
 
     this.setState({ modalVisible: false });
+
+    console.tron.log(this.props.users)
   }
 
   onMapPress = ({ nativeEvent }) => {
@@ -61,6 +66,7 @@ class Map extends Component {
 
     // const { region } = this.props;
     // console.log(region);
+    
 
     return (
       <View style={styles.container}>
@@ -76,7 +82,7 @@ class Map extends Component {
           onLongPress={ this.openModal }
         >
 
-        { this.state.coordinateTest && this.state.coordinateTest.map(coord => <MapView.Marker coordinate={coord} /> ) }
+        { this.props.users && this.props.users.map(coord => <MapView.Marker key={coord.user.id} coordinate={coord.user.coordinate} /> ) }
 
         </MapView>
 
@@ -103,7 +109,9 @@ class Map extends Component {
   }
 }
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+  users: state.newUser,
+});
 
 const mapDispatchToProps = dispatch =>
   bindActionCreators(actions, dispatch);
