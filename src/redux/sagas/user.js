@@ -11,15 +11,13 @@ export function* searchAndAddUser(action) {
   yield put({
     type: Types.ADD,
     playload: { 
-      user: {
-        id: response.data.id,
+      id: response.data.id,
         coordinate: action.playload.coordinate,
         data: {
           login: response.data.login,
           avatar_url: response.data.avatar_url,
           bio: response.data.bio,
         }
-      }
     }
   });
 }
