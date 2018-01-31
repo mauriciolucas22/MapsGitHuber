@@ -1,12 +1,13 @@
 import api from 'services/api';
 import { call, put } from 'redux-saga/effects';
+import { Types } from 'redux/ducks/newUser';
 
 export function* searchAndAddUser(action) {
   const response = yield call(api.get, `/users/${action.playload.userName}`);
 
   // Salva no AsyncStorage um playload com renponse da api
   yield put({
-    type: 'ADD_USER',
+    type: Types.ADD,
     playload: { 
       user: {
         id: response.data.id,

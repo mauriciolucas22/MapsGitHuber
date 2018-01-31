@@ -5,7 +5,7 @@ import storage from 'redux-persist/es/storage';
 import sagas from './sagas';
 
 // Reducers
-import reducers from './reducers';
+import reducers from './ducks';
 
 // Persistor
 const rootReducer = persistCombineReducers({

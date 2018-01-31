@@ -10,7 +10,7 @@ import store from 'redux/store';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import * as actions from 'redux/actions/newUser';
+import { searchUser } from 'redux/ducks/newUser';
 
 import MArker from 'components/Marker';
 
@@ -35,7 +35,6 @@ class Map extends Component {
 
   componentWillMount = () => {
     // AsyncStorage.clear();
-    console.tron.log(this.props.users);
   }
 
 
@@ -135,6 +134,6 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch =>
-  bindActionCreators(actions, dispatch);
+  bindActionCreators({ searchUser }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Map);
