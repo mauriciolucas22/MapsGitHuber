@@ -50,8 +50,6 @@ class Map extends Component {
     this.props.searchUser(this.state.userName, this.state.coordinate);
 
     this.setState({ modalVisible: false });
-
-    console.tron.log(this.props.users)
   }
 
   onMapPress = ({ nativeEvent }) => {

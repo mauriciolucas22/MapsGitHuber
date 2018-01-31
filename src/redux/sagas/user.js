@@ -5,6 +5,8 @@ import { Types } from 'redux/ducks/newUser';
 export function* searchAndAddUser(action) {
   const response = yield call(api.get, `/users/${action.playload.userName}`);
 
+  if(response.status !== 200) return ;
+
   // Salva no AsyncStorage um playload com renponse da api
   yield put({
     type: Types.ADD,
