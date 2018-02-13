@@ -2,10 +2,14 @@ import api from 'services/api';
 import { call, put } from 'redux-saga/effects';
 import { Types } from 'redux/ducks/newUser';
 
+/**
+ * Middleware redux
+ * Chamado quando um reducer SEARCH é recebido no saga
+ */
 export function* searchAndAddUser(action) {
-  const response = yield call(api.get, `/users/${action.playload.userName}`);
+  const response = yield call(api.get, `/users/${action.playload.userName}`); // faz request na api do github
 
-  if(response.status !== 200) return ;
+  if(response.status !== 200) return ; // se user não existe return
 
   // Salva no AsyncStorage um playload com renponse da api
   yield put({

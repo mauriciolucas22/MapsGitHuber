@@ -3,13 +3,6 @@ import colors from './colors';
 import fonts from './fonts';
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-  },
-  map: {
-    ...StyleSheet.absoluteFillObject,
-  },
   modalContainer: {
     flex: 1,
     justifyContent: 'center',
@@ -57,13 +50,6 @@ const styles = StyleSheet.create({
     backgroundColor: colors.cancelButton,
   },
   //textCancelButton: {},
-  avatar: {
-    width: 32,
-    height: 32,
-    borderWidth: 5,
-    borderColor: colors.white,
-  },
-
 });
 
 export default styles;

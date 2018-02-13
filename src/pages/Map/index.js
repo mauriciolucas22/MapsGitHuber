@@ -12,8 +12,6 @@ import { connect } from 'react-redux';
 
 import { searchUser } from 'redux/ducks/newUser';
 
-import MArker from 'components/Marker';
-
 /**
  * coordinate: new MapView.AnimatedRegion({
       latitude: LATITUDE,
@@ -76,6 +74,17 @@ class Map extends Component {
         { this.props.users && this.props.users.map( marker =>  <Marker key={} image={marker.user.data.avatar_url} coordinate={marker.user.coordinate} />) }
      */
 
+     /*<MapView.Callout>
+                <View
+                  style={{
+                    height: 100,
+                    width: 100,
+                  }}
+                >
+                  <Text>Callout here</Text>
+                </View>
+              </MapView.Callout>*/
+
     return (
       <View style={styles.container}>
 
@@ -90,11 +99,18 @@ class Map extends Component {
           onLongPress={ this.openModal }
         >
 
-{ this.props.users && this.props.users.map(coord => <MapView.Marker key={coord.id}  coordinate={coord.coordinate} >
-          <View>
-            <Image style={styles.avatar} source={{ uri: coord.data.avatar_url }}/>
-          </View>
-        </MapView.Marker> ) }
+          {
+            this.props.users && this.props.users.map(coord =>
+              <MapView.Marker key={coord.id}  coordinate={coord.coordinate} title={coord.data.login} description={coord.data.bio}>
+                <View>
+                  <Image style={styles.avatar} source={{ uri: coord.data.avatar_url }}/>
+                </View>
+
+                
+
+              </MapView.Marker>
+            ) 
+          }
 
         </MapView>
 
