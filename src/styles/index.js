@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     padding: 20,
     borderRadius: 5,
-    backgroundColor: colors.white,
+    backgroundColor: 'rgba(255, 255, 255, 0.6)',
     marginHorizontal: 20,
   },
   title:{
