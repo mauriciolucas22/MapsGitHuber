@@ -11,6 +11,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import { searchUser } from 'redux/ducks/newUser';
+import { enableModalVisible } from 'redux/ducks/modalVisible';
 
 /**
  * coordinate: new MapView.AnimatedRegion({
@@ -148,6 +149,6 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch =>
-  bindActionCreators({ searchUser }, dispatch);
+  bindActionCreators({ searchUser, enableModalVisible }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Map);
