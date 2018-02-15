@@ -66,4 +66,9 @@ const styles = StyleSheet.create({
 
 });
 
+export {
+  colors,
+  fonts,
+}
+
 export default styles;

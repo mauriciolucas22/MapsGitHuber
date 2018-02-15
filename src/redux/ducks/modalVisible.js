@@ -18,7 +18,7 @@ export default function modalVisible(state = initalState, action) {
   }
 }
 
-// Action Crestors
+// Action Creators
 
 export function enableModalVisible() {
   return {

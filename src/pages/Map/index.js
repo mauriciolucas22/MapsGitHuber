@@ -4,14 +4,14 @@ import MapView, { Marker } from 'react-native-maps';
 
 import styles from 'styles';
 
-import store from 'redux/store';
-
 // Redux
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import { searchUser } from 'redux/ducks/newUser';
-import { enableModalVisible } from 'redux/ducks/modalVisible';
+// import { enableModalVisible } from 'redux/ducks/modalVisible';
+
+import MyModal from 'components/Modal';
 
 /**
  * coordinate: new MapView.AnimatedRegion({
@@ -24,40 +24,15 @@ class Map extends Component {
 
   state = {
     modalVisible: false,
-    coordinate: {
-      latitude: -27.2177659,
-      longitude: -49.6451598,
-    },
-    coordinateTest: [],
-    userName: 'mauriciolucas22',
+    coordinate: {},
   }
 
   componentWillMount = () => {
     // AsyncStorage.clear();
   }
 
-
   openModal = ({ nativeEvent }) => {
-    this.setState({ modalVisible: true });
-    //console.tron.log(nativeEvent.coordinate);
-
-    // faz copia e setState
-    this.setState({ coordinate: nativeEvent.coordinate});
-  }
-
-  closeModal() {
-    this.props.searchUser(this.state.userName, this.state.coordinate);
-
-    this.setState({ modalVisible: false });
-  }
-
-  onMapPress = ({ nativeEvent }) => {
-    console.tron.log(nativeEvent.coordinate)
-    
-  }
-
-  cancel() {
-    this.setState({ modalVisible: false });
+    this.setState({ modalVisible: true, coordinate: nativeEvent.coordinate });
   }
 
 
@@ -106,39 +81,13 @@ class Map extends Component {
                 <View>
                   <Image style={styles.avatar} source={{ uri: coord.data.avatar_url }}/>
                 </View>
-
-                
-
               </MapView.Marker>
             ) 
           }
 
         </MapView>
 
-
-        <Modal
-          visible={this.state.modalVisible}
-          animationType={'slide'}
-          onRequestClose={() => this.closeModal()}
-        >
-          <View style={styles.modalContainer}>
-            <View style={styles.innerContainer}>
-              <Text style={styles.title}>Adicionar novo local</Text>
-              
-              <TextInput style={styles.input} onChangeText={userName => this.setState({userName})} value={this.state.userName}/>
-              
-              <View style={styles.buttonContainer}>
-                <TouchableOpacity style={styles.saveButton} onPress={() => this.closeModal()} >
-                  <Text style={styles.textSaveButton} >Salvar</Text>
-                </TouchableOpacity>
-                
-                <TouchableOpacity style={styles.cancelButton} onPress={() => this.cancel()}>
-                    <Text style={styles.textCancelButton} >Cancelar</Text>
-                </TouchableOpacity>
-              </View>
-            </View>
-          </View>
-        </Modal>
+        { this.state.modalVisible && <MyModal modalVisible={true} coordinate={this.state.coordinate}/> }
       </View>
     );
   }
@@ -149,6 +98,6 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch =>
-  bindActionCreators({ searchUser, enableModalVisible }, dispatch);
+  bindActionCreators({ searchUser }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Map);
