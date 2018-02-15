@@ -14,7 +14,7 @@ class MyModal extends Component {
 
   state = {
     modalVisible: this.props.modalVisible, // Modal visible status
-    coordinate: {
+    coordinate: this.props.coordinate || {
       latitude: -27.2177659,
       longitude: -49.6451598,
     }, // coordinate initial

@@ -28,3 +28,12 @@ export function enableModalVisible() {
     },
   };
 };
+
+export function disableModalVisible() {
+  return {
+    type: Types.DISABLE,
+    playload: {
+      status: false,
+    }
+  }
+}

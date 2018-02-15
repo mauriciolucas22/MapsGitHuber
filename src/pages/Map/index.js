@@ -1,17 +1,16 @@
 import React, { Component } from 'react';
 import { AsyncStorage, View, Text, StyleSheet, Image, Modal, TextInput, TouchableOpacity } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
-
 import styles from 'styles';
+
+import MyModal from 'components/Modal';
 
 // Redux
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { searchUser } from 'redux/ducks/newUser';
-// import { enableModalVisible } from 'redux/ducks/modalVisible';
-
-import MyModal from 'components/Modal';
+// Reducers
+import { enableModalVisible } from 'redux/ducks/modalVisible';
 
 /**
  * coordinate: new MapView.AnimatedRegion({
@@ -32,9 +31,9 @@ class Map extends Component {
   }
 
   openModal = ({ nativeEvent }) => {
+    this.props.enableModalVisible();
     this.setState({ modalVisible: true, coordinate: nativeEvent.coordinate });
   }
-
 
   render() {
 
@@ -98,6 +97,6 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch =>
-  bindActionCreators({ searchUser }, dispatch);
+  bindActionCreators({ enableModalVisible }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Map);
