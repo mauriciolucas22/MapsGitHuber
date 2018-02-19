@@ -28,11 +28,13 @@ class Map extends Component {
 
   componentWillMount = () => {
     // AsyncStorage.clear();
+    const temp = this.state.modalVisible;
+    console.tron.log(">>>",temp);
   }
 
   openModal = ({ nativeEvent }) => {
-    this.props.enableModalVisible();
     this.setState({ modalVisible: true, coordinate: nativeEvent.coordinate });
+    this.props.enableModalVisible();
   }
 
   render() {

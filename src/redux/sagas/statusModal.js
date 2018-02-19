@@ -10,6 +10,8 @@ import { Types } from 'redux/ducks/modalVisible';
  */
 export function* changeModalVisible(action) {
   // Salva no AsyncStorage um playload com renponse da api
+  const temp = action.playload.status;
+  console.tron.log(temp);
   yield put({
     type: action.playload.status === true ? Types.ENABLE : Types.DISABLE,
     playload: { 
