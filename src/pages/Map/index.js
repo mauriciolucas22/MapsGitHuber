@@ -9,7 +9,8 @@ import MyModal from 'components/Modal';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-// Reducers
+// Reducers Action Creators
+//import { searchUser } from 'redux/ducks/newUser';
 import { enableModalVisible } from 'redux/ducks/modalVisible';
 
 /**
@@ -28,13 +29,12 @@ class Map extends Component {
 
   componentWillMount = () => {
     // AsyncStorage.clear();
-    const temp = this.state.modalVisible;
-    console.tron.log(">>>",temp);
   }
 
   openModal = ({ nativeEvent }) => {
-    this.setState({ modalVisible: true, coordinate: nativeEvent.coordinate });
-    this.props.enableModalVisible();
+    console.tron.log('OKOKOK');
+    
+    //this.setState({ modalVisible: true, coordinate: nativeEvent.coordinate });
   }
 
   render() {
@@ -88,7 +88,7 @@ class Map extends Component {
 
         </MapView>
 
-        { this.state.modalVisible && <MyModal modalVisible={true} coordinate={this.state.coordinate}/> }
+        { this.state.modalVisible && <MyModal modalVisible={this.state.modalVisible} coordinate={this.state.coordinate}/> }
       </View>
     );
   }
