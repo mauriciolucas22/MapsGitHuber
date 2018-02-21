@@ -32,7 +32,7 @@ class Map extends Component {
   }
 
   openModal = ({ nativeEvent }) => {
-    console.tron.log('OKOKOK');
+    this.props.enableModalVisible();
     
     //this.setState({ modalVisible: true, coordinate: nativeEvent.coordinate });
   }

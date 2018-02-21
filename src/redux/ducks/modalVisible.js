@@ -15,7 +15,7 @@ export default function modalVisible(state = initalState, action) {
   switch (action.type) {
     case Types.ENABLE:
       console.tron.log(state);
-      return { ...state, modalVisible: action.playload.modalVisible };
+      return { ...state, ...action.playload };
     default:
       return state;
   }
