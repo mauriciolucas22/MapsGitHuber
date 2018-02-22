@@ -8,13 +8,11 @@ export const Types = {
 // Reducer
 
 const initalState = {
-  modalVisible: false,
 };
 
 export default function modalVisible(state = initalState, action) {
   switch (action.type) {
     case Types.ENABLE:
-      console.tron.log(state);
       return { ...state, ...action.playload };
     default:
       return state;
@@ -23,7 +21,7 @@ export default function modalVisible(state = initalState, action) {
 
 // Action Creators
 
-export function enableModalVisible() {
+/*export function enableModalVisible() {
   return {
     type: Types.ENABLE,
     playload: {
@@ -37,6 +35,15 @@ export function disableModalVisible() {
     type: Types.DISABLE,
     playload: {
       status: false,
+    }
+  }
+}
+*/
+export function setModalVisible(status) {
+  return {
+    type: status === true ? Types.ENABLE : Types.DISABLE,
+    playload: {
+      status,
     }
   }
 }

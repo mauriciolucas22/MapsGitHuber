@@ -8,22 +8,20 @@ import { Types } from 'redux/ducks/modalVisible';
  * 
  * action recebe o playload da ActionCreator modalVisible->enableModalVisible
  */
-/*export function* changeModalVisible(action) {
-  // Salva no AsyncStorage um playload com renponse da api
-  const temp = action.playload.status;
-  console.tron.log(temp);
+
+/*export function* changeModalVisible(action) {  
   yield put({
     type: action.playload.status === true ? Types.ENABLE : Types.DISABLE,
     playload: { 
-      status: action.playload.status,
+      modalVisible: action.playload.status,
     }
   });
 }*/
 
-export function* changeModalVisible(action) {  
+export function* changeModalVisible(action) {
   yield put({
-    type: action.playload.status === true ? Types.ENABLE : Types.DISABLE,
-    playload: { 
+    type: action.type,
+    playload: {
       modalVisible: action.playload.status,
     }
   });

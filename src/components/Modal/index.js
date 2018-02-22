@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 
 // Reducers
 import { searchUser } from 'redux/ducks/newUser';
-import { disableModalVisible } from 'redux/ducks/modalVisible';
+import { setModalVisible } from 'redux/ducks/modalVisible';
 
 class MyModal extends Component {
 
@@ -76,6 +76,6 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = disptach =>
-  bindActionCreators({ searchUser, disableModalVisible }, disptach);
+  bindActionCreators({ searchUser, setModalVisible }, disptach);
 
 export default connect(mapStateToProps, mapDispatchToProps)(MyModal);

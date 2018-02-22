@@ -11,7 +11,7 @@ import { connect } from 'react-redux';
 
 // Reducers Action Creators
 //import { searchUser } from 'redux/ducks/newUser';
-import { enableModalVisible } from 'redux/ducks/modalVisible';
+import { setModalVisible } from 'redux/ducks/modalVisible';
 
 /**
  * coordinate: new MapView.AnimatedRegion({
@@ -32,7 +32,7 @@ class Map extends Component {
   }
 
   openModal = ({ nativeEvent }) => {
-    this.props.enableModalVisible();
+    this.props.setModalVisible(true);
     
     //this.setState({ modalVisible: true, coordinate: nativeEvent.coordinate });
   }
@@ -99,6 +99,6 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch =>
-  bindActionCreators({ enableModalVisible }, dispatch);
+  bindActionCreators({ setModalVisible }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Map);
