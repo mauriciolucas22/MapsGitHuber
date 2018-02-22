@@ -45,7 +45,7 @@ class MyModal extends Component {
   render() {
     return(
       <Modal
-          visible={this.state.modalVisible}
+          visible={this.props.modalVisible}
           animationType={'slide'}
           onRequestClose={() => this.requestClose()}
         >

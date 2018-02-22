@@ -88,7 +88,7 @@ class Map extends Component {
 
         </MapView>
 
-        { this.state.modalVisible && <MyModal modalVisible={this.props.modalVisible.status} coordinate={this.state.coordinate}/> }
+        { this.props.modalVisible.status && <MyModal modalVisible={this.props.modalVisible.status} coordinate={this.state.coordinate}/> }
       </View>
     );
   }
