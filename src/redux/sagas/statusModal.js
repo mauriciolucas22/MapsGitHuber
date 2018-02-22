@@ -21,8 +21,6 @@ import { Types } from 'redux/ducks/modalVisible';
 export function* changeModalVisible(action) {
   yield put({
     type: action.type,
-    playload: {
-      modalVisible: action.playload.status,
-    }
+    playload: action.playload,
   });
 }

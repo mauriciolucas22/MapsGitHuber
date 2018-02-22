@@ -8,11 +8,13 @@ export const Types = {
 // Reducer
 
 const initalState = {
+  status: false,
 };
 
 export default function modalVisible(state = initalState, action) {
   switch (action.type) {
     case Types.ENABLE:
+    case Types.DISABLE:
       return { ...state, ...action.playload };
     default:
       return state;

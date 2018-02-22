@@ -88,7 +88,7 @@ class Map extends Component {
 
         </MapView>
 
-        { this.state.modalVisible && <MyModal modalVisible={this.state.modalVisible} coordinate={this.state.coordinate}/> }
+        { this.state.modalVisible && <MyModal modalVisible={this.props.modalVisible.status} coordinate={this.state.coordinate}/> }
       </View>
     );
   }
@@ -96,6 +96,7 @@ class Map extends Component {
 
 const mapStateToProps = state => ({
   users: state.newUser,
+  modalVisible: state.modalVisible,
 });
 
 const mapDispatchToProps = dispatch =>
